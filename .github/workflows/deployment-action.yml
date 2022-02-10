@@ -1,6 +1,6 @@
 #.github/workflows/deployment-action.yml
 name: 
-on: pull_request
+on: push
 
 jobs:
   build:
