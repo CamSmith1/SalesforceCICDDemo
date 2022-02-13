@@ -4,7 +4,6 @@ on:
     branches:
     - main
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,4 +30,4 @@ jobs:
       
 
     - name: Check Only Deploy source
-      run: ls && node_modules/sfdx-cli/bin/run force:source:deploy -u devhub -p ./force-app 
+      run: cd .. && ls && node_modules/sfdx-cli/bin/run force:source:deploy -u devhub -p ./force-app 
