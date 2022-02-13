@@ -21,6 +21,7 @@ jobs:
     - name: Install Salesforce CLI  
     #Install all dependancies for Salesforce - SFDX CLI
       run: |
+        # Hide npm warning messages - for readability
         export npm_config_loglevel=silent
         npm install sfdx-cli
         node_modules/sfdx-cli/bin/run --version
@@ -35,4 +36,4 @@ jobs:
       
     - name: Deploy Source to target org 
     # Deployment Script - deploy the force-app folder to the target org
-      run: ls && node_modules/sfdx-cli/bin/run force:source:deploy -u devhub -p ./force-app 
+      run:  node_modules/sfdx-cli/bin/run force:source:deploy -u devhub -p ./force-app 
