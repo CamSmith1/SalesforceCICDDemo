@@ -30,5 +30,5 @@ jobs:
         SALESFORCE_JWT_SECRET_KEY: ${{ secrets.SALESFORCE_JWT_SECRET_KEY }}
       
 
-    - name: Check Only Deploy source
+    - name: Deploy Source to target org
       run: ls && node_modules/sfdx-cli/bin/run force:source:deploy -u devhub -p ./force-app 
