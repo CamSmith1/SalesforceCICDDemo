@@ -1,8 +1,7 @@
 #.github/workflows/deployment-action.yml
 name: 
 on: push
-branches:
-  - main
+
 paths:
   - 'force-app/**'
 
