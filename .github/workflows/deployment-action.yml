@@ -4,11 +4,12 @@ on:
     branches:
     - main
 
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@main
+    - uses: actions/checkout@checkout@v2
       if: github.event.action == 'opened' || github.event.action == 'synchronize'
     - uses: actions/setup-node@v1
       with:
@@ -22,7 +23,6 @@ jobs:
         node_modules/sfdx-cli/bin/run plugins --core
       
     - name: Authenticate DevHub
-
       run: |
         echo "${SALESFORCE_JWT_SECRET_KEY}" > server.key
         node_modules/sfdx-cli/bin/run force:auth:jwt:grant --clientid ${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile server.key --username ${{ secrets.SALESFORCE_DEVHUB_USERNAME}} --setdefaultdevhubusername -a devhub
@@ -31,5 +31,4 @@ jobs:
       
 
     - name: Check Only Deploy source
-
-      run:  node_modules/sfdx-cli/bin/run force:source:deploy -u devhub -p ./force-app 
+      run: ls && node_modules/sfdx-cli/bin/run force:source:deploy -u devhub -p ./force-app 
