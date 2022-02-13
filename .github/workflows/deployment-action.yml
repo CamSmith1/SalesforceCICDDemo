@@ -21,6 +21,7 @@ jobs:
     - name: Install Salesforce CLI  
     #Install all dependancies for Salesforce - SFDX CLI
       run: |
+        process.removeAllListeners('warning');
         npm install sfdx-cli
         node_modules/sfdx-cli/bin/run --version
         node_modules/sfdx-cli/bin/run plugins --core
