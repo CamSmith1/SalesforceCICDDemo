@@ -1,7 +1,8 @@
 #.github/workflows/deployment-action.yml
 on:
   push:
-    branches: [ main ]
+    branches:
+    - main
     paths:
       - 'force-app/main/default/**'
 
