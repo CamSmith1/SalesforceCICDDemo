@@ -1,9 +1,9 @@
 #.github/workflows/deployment-action.yml
-name: 
-on: push
-
-paths:
-  - 'force-app/**'
+on:
+  push:
+    branches: main
+    paths:
+      -'force-app/**'
 
 jobs:
   build:
