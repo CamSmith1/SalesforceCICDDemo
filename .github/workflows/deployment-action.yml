@@ -9,10 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-
     - uses: actions/checkout@v2 
-    
-    #Install node
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
@@ -29,8 +26,6 @@ jobs:
         echo "${SALESFORCE_JWT_SECRET_KEY}" > server.key
         node_modules/sfdx-cli/bin/run force:auth:jwt:grant --clientid ${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile server.key --username ${{ secrets.SALESFORCE_DEVHUB_USERNAME}} --setdefaultdevhubusername -a devhub
       env:
-        SALESFORCE_JWT_SECRET_KEY: ${{ secrets.SALESFORCE_JWT_SECRET_KEY }}
-      
-
-    # Deployment Script - deploy the force-app folder to the target org
+        SALESFORCE_JWT_SECRET_KEY: ${{ secrets.SALESFORCE_JWT_SECRET_KEY }}  
+    - name: Deploy to SF        
       run:  node_modules/sfdx-cli/bin/run force:source:deploy -u devhub -p ./force-app 
