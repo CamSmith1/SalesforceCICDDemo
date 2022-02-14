@@ -16,7 +16,6 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-        check-latest: true
 
     - name: Install Salesforce CLI  
     #Install all dependancies for Salesforce - SFDX CLI
